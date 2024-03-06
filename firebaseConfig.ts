@@ -24,13 +24,6 @@ export const FIREBASE_ANALYTICS = getAnalytics(FIREBASE_APP);
 export const FIREBASE_AUTH = getAuth(FIREBASE_APP);
 export const FIRESTORE_DB = getFirestore(FIREBASE_APP);
 
-onAuthStateChanged(FIREBASE_AUTH, (user) => {
-  if (user) {
-    console.log('User is signed in', user);
-  } else {
-    console.log('User is signed out');
-  }
 
-}
 // For more information on how to access Firebase in your project,
 // see the Firebase documentation: https://firebase.google.com/docs/web/setup#access-firebase
