@@ -1,22 +1,30 @@
-import {View,Text, Pressable, Button} from 'react-native';
-import React, { useEffect } from 'react';
+import {View,Text, StyleSheet,TextInput,Pressable, Button} from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { FIRESTORE_DB } from '../../firebaseConfig';
 import { addDoc, collection } from 'firebase/firestore';
 
 const List = ({navigation}: any) => {
+  const [list,setList] = useState<any[]>([]);
+  const [item,setItem] = useState<any[]>([]);
+  useEffect(() => {},[]);
+
     const addList = async() => {
-        const doc = addDoc(collection(FIRESTORE_DB,"lists"),{title:'List 3',items:["item1","item2","item3"]})
-        console.log('Document added',doc);
+      const doc = addDoc(collection(FIRESTORE_DB,"lists"),{title:'List 3',items:["item1","item2","item3"]});
+        
     };
   return (
-    <View>
-      <Text>List</Text>
-        <Pressable onPress={addList}>
-            <Text>Add List</Text>
-        </Pressable>
-      <Button onPress={() => navigation.navigate('Details')} title="Go to Details" />
+    <View style = {styles.container}>
+   <View>
+    <TextInput placeholder = 'Enter List Name'
+    onChangeText = {(text : string) => setList(text)}
+    value = {list}/>
+   </View>
     </View>
   );
 }
 
 export default List;
+
+const styles = StyleSheet.create({
+
+})
